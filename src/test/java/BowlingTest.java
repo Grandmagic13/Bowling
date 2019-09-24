@@ -40,4 +40,10 @@ public class BowlingTest {
         BowlingGame game = new BowlingGame("0|0|0|0|0|0|0|0|0|0||");
         assertThat(game.result(), is(0));
     }
+
+    @Test
+    public void perfectGame() {
+        BowlingGame game = new BowlingGame("X|X|X|X|X|X|X|X|X|X||XX");
+        assertThat(game.result(), is(300));
+    }
 }
