@@ -17,8 +17,12 @@ public class BowlingGame {
     }
 
     private String scoringPattern() {
-        List<String> patternList = new ArrayList<>(Collections.nCopies(10, "\\d\\|"));
-        patternList.add("\\|\\d?");
+        final String values = "[\\d, X]";
+        final String round = String.format("%s\\|", values);
+        final String bonusScores = String.format("\\|%s?X?", values);
+
+        List<String> patternList = new ArrayList<>(Collections.nCopies(10, round));
+        patternList.add(bonusScores);
         return String.join("", patternList);
     }
 
