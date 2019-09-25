@@ -85,4 +85,10 @@ public class BowlingTest {
         assertThat(game.result(), is(150));
     }
 
+    @Test
+    public void mixedInput() {
+        BowlingGame game = new BowlingGame("X|7/|9-|X|-8|8/|-6|X|X|X||81");
+        assertThat(game.result(), is(167));
+    }
+
 }
