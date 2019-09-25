@@ -22,7 +22,7 @@ public class BowlingGame {
     }
 
     private String scoringPattern() {
-        final String values = "[\\d, X]";
+        final String values = "([\\d, -]{2}|X)";
         final String round = String.format("%s\\|", values);
         final String bonusScores = String.format("\\|%s?X?", values);
 
@@ -52,7 +52,14 @@ public class BowlingGame {
     }
 
     private int scoreToValue(String score){
-        return score.equals("X") ? 10 : Integer.parseInt(score);
+        switch(score){
+            case "X":
+                return 10;
+            case "-":
+                return 0;
+            default:
+                return Integer.parseInt(score);
+        }
     }
 
 }

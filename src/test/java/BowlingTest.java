@@ -19,6 +19,21 @@ public class BowlingTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
+    public void inuputThrowsWhenOnlyOneValueInRound() {
+        new BowlingGame("1|1|1|1|1|1|1|1|1|1||");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void inuputThrowsWhenOnlyOneMissInRound() {
+        new BowlingGame("-|-|-|-|-|-|-|-|-|-||");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void inuputThrowsWhenRoundStartsWithSpare() {
+        new BowlingGame("12|\\2|12|12|12|12|12|12|12|12||");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
     public void inuputThrowsWhenHasTooManySeparators() {
         new BowlingGame("12|12|12|12|12|12|12|12|12|12|12||");
     }
@@ -31,6 +46,12 @@ public class BowlingTest {
     @Test(expected = IllegalArgumentException.class)
     public void inuputThrowsWhenValuesAreCharacters2() {
         new BowlingGame("*|*|*|*|*|*|*|*|*|*||");
+    }
+
+
+    @Test(expected = IllegalArgumentException.class)
+    public void inuputThrowsWhenTwoStrikesInARound() {
+        new BowlingGame("X|X|X|XX|X|X|X|X|X|X||XX");
     }
 
     // Game mechanics tests
