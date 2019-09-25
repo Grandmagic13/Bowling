@@ -79,4 +79,10 @@ public class BowlingTest {
         assertThat(game.result(), is(90));
     }
 
+    @Test
+    public void allSpares() {
+        BowlingGame game = new BowlingGame("5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5");
+        assertThat(game.result(), is(150));
+    }
+
 }
