@@ -72,11 +72,11 @@ public class BowlingTest {
         BowlingGame game = new BowlingGame("X|X|X|X|X|X|X|X|X|X||XX");
         assertThat(game.result(), is(300));
     }
-//
-//    @Test
-//    public void allNinesAndMisses() {
-//        BowlingGame game = new BowlingGame("9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||");
-//        assertThat(game.result(), is(0));
-//    }
+
+    @Test
+    public void allNinesAndMisses() {
+        BowlingGame game = new BowlingGame("9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||");
+        assertThat(game.result(), is(90));
+    }
 
 }

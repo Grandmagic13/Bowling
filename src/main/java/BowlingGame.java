@@ -34,7 +34,7 @@ public class BowlingGame {
     public int result(){
         int sum = 0;
         String[] scores = stripScores();
-        for(int index = 0; index < scores.length - 2; ++index){
+        for(int index = 0; index < scores.length - numberOfBonusRolls(); ++index){
             String actScore = scores[index];
             sum += scoreToValue(actScore);
             if(actScore.equals("X")) {
@@ -43,6 +43,11 @@ public class BowlingGame {
             }
         }
         return sum;
+    }
+
+    private int numberOfBonusRolls(){
+        String[] roundsBonusesSplit = this.rounds.split("\\|\\|");
+        return roundsBonusesSplit.length < 2 ? 0 : roundsBonusesSplit[1].length();
     }
 
     private String[] stripScores() {
