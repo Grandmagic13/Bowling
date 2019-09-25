@@ -24,6 +24,11 @@ public class BowlingTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
+    public void inuputThrowsWhenThreeValuesInRound() {
+        new BowlingGame("111|111|111|111|111|111|111|111|111|111||");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
     public void inuputThrowsWhenOnlyOneMissInRound() {
         new BowlingGame("-|-|-|-|-|-|-|-|-|-||");
     }
@@ -67,5 +72,11 @@ public class BowlingTest {
         BowlingGame game = new BowlingGame("X|X|X|X|X|X|X|X|X|X||XX");
         assertThat(game.result(), is(300));
     }
+//
+//    @Test
+//    public void allNinesAndMisses() {
+//        BowlingGame game = new BowlingGame("9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||");
+//        assertThat(game.result(), is(0));
+//    }
 
 }
