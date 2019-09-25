@@ -10,17 +10,17 @@ public class BowlingTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void inuputThrowsWhenHasNoSeparators() {
-        new BowlingGame("0000000000");
+        new BowlingGame("12121212121212121212");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void inuputThrowsWhenHasNotEnoughSeparators() {
-        new BowlingGame("0|0|00000000");
+        new BowlingGame("12|12|1212121212121212");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void inuputThrowsWhenHasTooManySeparators() {
-        new BowlingGame("0|0|0|0|0|0|0|0|0|0|0|");
+        new BowlingGame("12|12|12|12|12|12|12|12|12|12|12||");
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -37,7 +37,7 @@ public class BowlingTest {
 
     @Test
     public void gutterGame() {
-        BowlingGame game = new BowlingGame("0|0|0|0|0|0|0|0|0|0||");
+        BowlingGame game = new BowlingGame("--|--|--|--|--|--|--|--|--|--||");
         assertThat(game.result(), is(0));
     }
 
@@ -46,4 +46,5 @@ public class BowlingTest {
         BowlingGame game = new BowlingGame("X|X|X|X|X|X|X|X|X|X||XX");
         assertThat(game.result(), is(300));
     }
+
 }
