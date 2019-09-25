@@ -22,9 +22,8 @@ public class BowlingGame {
     }
 
     private String scoringPattern() {
-        final String values = "([\\d, -]{2}|X)";
-        final String round = String.format("%s\\|", values);
-        final String bonusScores = String.format("\\|%s?X?", values);
+        final String round = "([\\d, -]{2}|\\d/|X)\\|";
+        final String bonusScores = "\\|(\\d|X)?X?";
 
         List<String> patternList = new ArrayList<>(Collections.nCopies(10, round));
         patternList.add(bonusScores);
@@ -36,10 +35,13 @@ public class BowlingGame {
         String[] scores = stripScores();
         for(int index = 0; index < scores.length - numberOfBonusRolls(); ++index){
             String actScore = scores[index];
-            sum += scoreToValue(actScore);
+            sum += scoreToValue(scores, index);
             if(actScore.equals("X")) {
-                sum += scoreToValue(scores[index + 1]);
-                sum += scoreToValue(scores[index + 2]);
+                sum += scoreToValue(scores, index + 1);
+                sum += scoreToValue(scores, index + 2);
+            }
+            if(actScore.equals("/")){
+                sum += scoreToValue(scores, index + 1);
             }
         }
         return sum;
@@ -56,14 +58,16 @@ public class BowlingGame {
                 .toArray(String[]::new);
     }
 
-    private int scoreToValue(String score){
-        switch(score){
+    private int scoreToValue(String[] scores, int index){
+        switch(scores[index]){
             case "X":
                 return 10;
             case "-":
                 return 0;
+            case "/":
+                return 10 - scoreToValue(scores, index - 1);
             default:
-                return Integer.parseInt(score);
+                return Integer.parseInt(scores[index]);
         }
     }
 
