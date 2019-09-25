@@ -23,7 +23,7 @@ public class BowlingGame {
 
     private String scoringPattern() {
         final String round = "([\\d, -]{2}|\\d/|X)\\|";
-        final String bonusScores = "\\|(\\d|X)?X?";
+        final String bonusScores = "\\|[\\d, X]{0,2}";
 
         List<String> patternList = new ArrayList<>(Collections.nCopies(10, round));
         patternList.add(bonusScores);
