@@ -35,7 +35,7 @@ public class BowlingTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void inuputThrowsWhenRoundStartsWithSpare() {
-        new BowlingGame("12|\\2|12|12|12|12|12|12|12|12||");
+        new BowlingGame("12|/2|12|12|12|12|12|12|12|12||");
     }
 
     @Test(expected = IllegalArgumentException.class)
